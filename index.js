@@ -1,5 +1,4 @@
 var docker = require('docker-remote-api')
-var collect = require('stream-collector')
 var through = require('through2')
 var JSONStream = require('JSONStream')
 var pump = require('pump')
