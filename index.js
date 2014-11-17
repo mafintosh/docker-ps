@@ -5,7 +5,7 @@ var JSONStream = require('JSONStream')
 var pump = require('pump')
 
 var map = function(ports) {
-  if (!ports) return null
+  if (!ports || ports.length === 0) return null
   var res = {}
   ports.forEach(function(p) {
     res[p.PublicPort] = p.PrivatePort
@@ -25,12 +25,16 @@ var ps = function(opts, cb) {
       image: c.Image,
       names: c.Names,
       ports: map(c.Ports),
-      status: c.Status
+      status: c.Status,
+      running: !/^Exited /i.test(c.Status)
     }
   }
 
+  var qs = {}
+  if (opts.all) qs.all = '1'
+
   if (cb) {
-    request.get('/containers/json', {json:true}, function(err, containers) {
+    request.get('/containers/json', {json:true, qs:qs}, function(err, containers) {
       if (err) return cb(err)
       cb(null, containers.map(format))
     })
@@ -45,7 +49,7 @@ var ps = function(opts, cb) {
     request.destroy()
   })
 
-  request.get('/containers/json', function(err, response) {
+  request.get('/containers/json', {qs:qs}, function(err, response) {
     if (err) return result.destroy()
     pump(response, JSONStream.parse('*'), result)
   })
