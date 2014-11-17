@@ -1,6 +1,6 @@
 {
   "name": "docker-ps",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Docker ps from node",
   "main": "index.js",
   "dependencies": {
