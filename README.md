@@ -28,6 +28,16 @@ stream.on('end', function() {
 })
 ```
 
+## Command line tool
+
+There is also a command line tool available
+
+```
+npm install -g docker-ps
+docker-ps # prints a process listing
+docker-ps --help # print a help message
+```
+
 ## License
 
 MIT
