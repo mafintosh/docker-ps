@@ -6,11 +6,16 @@
   "dependencies": {
     "JSONStream": "^0.9.0",
     "docker-remote-api": "^4.4.0",
+    "minimist": "^1.1.0",
     "pump": "^1.0.0",
+    "text-table": "^0.2.0",
     "through2": "^0.6.3"
   },
   "devDependencies": {
     "tape": "^3.0.3"
+  },
+  "bin": {
+    "docker-ps": "./bin.js"
   },
   "scripts": {
     "test": "tape test.js"

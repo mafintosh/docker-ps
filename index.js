@@ -24,6 +24,7 @@ var ps = function(opts, cb) {
       created: new Date(1000*c.Created),
       image: c.Image,
       names: c.Names,
+      command: c.Command,
       ports: map(c.Ports),
       status: c.Status,
       running: !/^Exited /i.test(c.Status)

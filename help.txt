@@ -1,0 +1,6 @@
+docker-ps [options]
+
+  --host,    -H   [docker-host]
+  --long,    -l
+  --all,     -a
+  --version
